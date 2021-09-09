@@ -8,7 +8,7 @@ You can test the app from [here](https://obadaelsharbatly.github.io/Weather-APP-
 
 ## App features *(content will be modified after finishing the app)*:
   ### Must have features:
-  * Design of the app should fits the [PostNL](https://www.postnl.nl/en/) website.
+  * Design of the app should fits the [PostNL](https://www.postnl.nl/en/) website style.
   * The weather information at least should show:
      * Location name
      * Time
