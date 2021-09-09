@@ -1,6 +1,10 @@
-# API-project
+# (API) weather App project
 
-## Weather App scetch design
+## check the project webpage:
+[Click to see the webpage](https://obadaelsharbatly.github.io/API-project/)
+
+
+## Scetch design:
 ![design of the idea](APISketch.jpg)
 
-can see demo from here : https://obadaelsharbatly.github.io/API-project/
+
