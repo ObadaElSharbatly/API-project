@@ -7,8 +7,8 @@
 You can test the app from [here](https://obadaelsharbatly.github.io/Weather-APP-HYF/):
 
 ## App features *(content will be modified after finishing the app)*:
-it's a weather app whick can give you information about the wewather condition
-for current time besides past and future.
+**it's a weather app whick can give you information about the wewather condition
+for current time besides past and future.**
 
   ### Must have features:
   * Design of the app should fits the [PostNL](https://www.postnl.nl/en/) website style.
