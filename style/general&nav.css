@@ -26,7 +26,6 @@ body {
 
 img {
     display:block;
-    max-height: 40px;
     margin-right: 10px;
 }
 
@@ -37,23 +36,23 @@ nav {
 
 #nav-lang {
     background-color: var(--header);
-    min-height: 30%;
+    min-height: 30px;
     border-bottom: 1px solid var(--header-border);
     font-size: 10pt;
 }
 
 #nav-header {
-    min-height: 70%;
+    min-height: 70px;
     border-bottom: 1px solid var(--header-border);
 
 }
 
-#logo  {
-    height: 7.5vh;
-    border: red 1px solid;
+#nav-header img {
+    max-height: 40px;
 }
+
 .container {
-    padding: 0px 25%;
+    padding: 0px 30%;
 }
 
 .container>div {
@@ -67,10 +66,15 @@ nav {
 .r-margin {
     margin-right: 10px;
 }
+
+.t-margin {
+    margin-top: var(--margin-t);
+}
 .flex {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .right {

@@ -24,7 +24,7 @@ input {
     font-size: 10pt;
 }
 
-#location {
+#select-location {
     width: calc(100% - 20px - 5px - 3px);
     
 }
@@ -47,12 +47,13 @@ input {
     cursor: pointer;
 }
 
-#date, #time {
+#select-date, #select-time {
     width: 100%;
 }
 
 section > div.flex > div.user-entry {
     width: 45%;
+    margin-top: var(--margin-t);
 }
 section, section>div.flex {
     margin-top: var(--margin-t);

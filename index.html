@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- style sheets -->
     <link rel="stylesheet" href="style/general&nav.css">
-    <link rel="stylesheet" href="style/body.css">
+    <link rel="stylesheet" href="style/entries.css">
+    <link rel="stylesheet" href="style/results.css">
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +17,7 @@
     <title>Weather information</title>
 </head>
 <body>
-    <!-- Navigation section -->
+    <!-- ------------- nav bar section ------------- -->
     <nav>
         <div class="flex right container" id="nav-lang">
             <h4 class="r-margin" id="nl-lang">NL</h4>
@@ -34,25 +35,25 @@
         </div>
     </nav>
 
-    <!-- User choices section -->
+    <!-- ------------- User choices section ------------- -->
     <Section class="container">
         <!-- location -->
         <div class="user-entry">
-            <label for="location"> What is your location ?</label><br>
-            <input type="text" placeholder="Type City / Country" name="location" id="location">
+            <label for="select-location"> What is your location ?</label><br>
+            <input type="text" placeholder="Type City / Country" name="select-location" id="select-location" value="">
             <i class="bi bi-geo-alt-fill" id="location-icon" title="Set the current location"></i>
         </div>
         
         <div class="flex spc-btw">
             <!-- date -->
             <div class="user-entry">
-                <label for="date"> Select date</label><br>
-                <input type="date" placeholder="Type City / Country" name="date" id="date">
+                <label for="select-date"> Select date</label><br>
+                <input type="date" placeholder="Type City / Country" name="select-date" id="select-date">
             </div>
             <!-- Timer -->
             <div class="user-entry">
-                <label for="time"> Select time slot</label><br>
-                <input type="time" list="time-list" step="600" name="time" id="time" required>
+                <label for="select-time"> Select time slot</label><br>
+                <input type="time" list="time-list" step="600" name="select-time" id="select-time" required>
                 <!-- <datalist id="time-list">
                     <option value="00:00:00">
                     <option value="01:00:00">
@@ -84,7 +85,35 @@
                 </datalist> -->
             </div>
         </div>
+        <div class="btn t-margin" id="search-btn">search</div>
     </Section>
+
+    <!-- ------------- result section ------------- -->
+    <section class="container" id="result-section">
+        <!-- General information -->
+        <div class="flex">
+            <div>
+                <h2 id="city-name">City / Country name</h2>
+                <br>
+                <h4 id="weather-con">weather condition</h4>
+                <br>
+                <h4><span id="day">Monday</span> >> <span id="time">17:00</span></h4>
+            </div>
+        
+            <div>
+                <img src="./imgs/209-2092042_partly-cloudy-clipart-clip-art-transparent-png-partly.png" alt="" id="temp-logo">
+            </div>
+            <div class="flex">
+                <p id="temp-deg">23 </p>
+                <p id="temp-type"><span id="c">C</span> | <span id="f">F</span></p>
+            </div>
+        </div>
+    </section>
+        <!-- more details -->
+        <div>
+
+        </div>
+    
 
 <script type="module" src="./script/main.js"></script>
 </body>

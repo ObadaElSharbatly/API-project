@@ -1,9 +1,19 @@
-import { hello } from "./fetch-functions/fetch.js";
+import { fetchCurrentData } from "./fetch-functions/fetch-current.js";
+import { showGeneralInformation } from "./manipulation/view-current-weather.js";
 
+const searchButton = document.querySelector('#search-btn')
 
-
-function main () {
-console.log("Hello everybody")
-console.log(hello);
+/* select the right event listener */
+function selectRightEventListener (){
+    const locationField = document.querySelector('#select-location').value;
+    const dateField = document.querySelector('#select-date').value;
+    const timeField = document.querySelector('#select-time').value;
+    // 
+    
+    fetchCurrentData()
+    .then((jsonWeatherData) => {
+        showGeneralInformation(jsonWeatherData);
+    });
 }
-window.addEventListener('load', main);
+
+searchButton.addEventListener('click', selectRightEventListener);
