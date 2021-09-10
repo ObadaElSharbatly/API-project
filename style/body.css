@@ -1,0 +1,59 @@
+i {
+    font-size: 15pt;
+    color: var(--dark-blue);
+    margin-left: 5px;
+}
+
+#location-icon:hover {
+    color: var(--btn-hover);
+    cursor: pointer;
+}
+
+input {
+    border-radius: var(--radius) ;
+    padding: 5px;
+    color: var(--dark-blue);
+    font-weight: 400;
+    height: var(--field-height);
+}
+
+
+.user-entry {
+    line-height: 20px;
+    padding-top: 5px;
+    font-size: 10pt;
+}
+
+#location {
+    width: calc(100% - 20px - 5px - 3px);
+    
+}
+
+.btn{
+    background-color: var(--orange);
+    height: var(--field-height);
+    min-width: 70px;
+    max-width: 100px;
+    color: var(--white);
+    text-align: center;
+    padding: 5px;
+    border-radius: var(--radius) var(--radius) 0px var(--radius);
+    font-size: 13pt;
+    letter-spacing: 1px;
+}
+
+.btn:hover {
+    background-color: var(--btn-hover);
+    cursor: pointer;
+}
+
+#date, #time {
+    width: 100%;
+}
+
+section > div.flex > div.user-entry {
+    width: 45%;
+}
+section, section>div.flex {
+    margin-top: var(--margin-t);
+}

@@ -6,6 +6,9 @@
     --dark-blue: #001a73;
     --btn-hover: #66728a;
     --footer: #66728a;
+    --field-height: 35px;
+    --radius: 5px;
+    --margin-t: 20px;
 }
 
 *{
@@ -14,6 +17,7 @@
     box-sizing: border-box;
     font-family: 'Lato', sans-serif;
     font-weight: 400;
+    
 }
 
 body {
@@ -22,7 +26,7 @@ body {
 
 img {
     display:block;
-    max-height: 5vh;
+    max-height: 40px;
     margin-right: 10px;
 }
 
@@ -33,13 +37,13 @@ nav {
 
 #nav-lang {
     background-color: var(--header);
-    min-height: 3.5vh;
+    min-height: 30%;
     border-bottom: 1px solid var(--header-border);
     font-size: 10pt;
 }
 
 #nav-header {
-    min-height: 7.5vh;
+    min-height: 70%;
     border-bottom: 1px solid var(--header-border);
 
 }
