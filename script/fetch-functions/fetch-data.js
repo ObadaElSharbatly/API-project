@@ -1,7 +1,10 @@
 import { datePicker, locationField, timePicker } from "../constants.js";
 
-export async function fetchCurrentData(){
-    let endPointUrl='';
+/* we need this to be global variable */
+export let searchMethod;
+
+export async function fetchRightData(){
+    let endPointUrl = '';
     
     function creatTheEndpointUrl() {
         // Select the information entered by user
@@ -9,32 +12,32 @@ export async function fetchCurrentData(){
         const dateValue = datePicker.value;
         const timeValue = timePicker.value;
         
-        let searchMethod;
+        
         const APIKey = 'key=b458fd088f5b42c082691547210409';
         const url = `https://api.weatherapi.com/v1/`;
         const locationPa = `&q=${locationValue}`;
         const date = `&dt=${dateValue}`
 
         if(locationValue !== '' && dateValue === '' && timeValue === ''){
-            searchMethod = 'current.json?'
-            return endPointUrl = `${url}${searchMethod}${APIKey}${locationPa}`;
+            searchMethod = 'current'
+            return endPointUrl = `${url}${searchMethod}.json?${APIKey}${locationPa}`;
 
         } else if (locationValue !== '' && dateValue !== '' && timeValue === '') {
-            searchMethod = 'forecast.json?'
-            return endPointUrl = `${url}${searchMethod}${APIKey}${locationPa}${date}`;
+            searchMethod = 'forecast'
+            return endPointUrl = `${url}${searchMethod}.json?${APIKey}${locationPa}${date}`;
         }
     }
 
     try {
         creatTheEndpointUrl();
-        console.log(endPointUrl)
+
         const receivedData = await fetch(endPointUrl);
-        if (receivedData.ok) {
+        if (receivedData.ok && receivedData.status === 200) {
             const jsonData = receivedData.json();
             console.log(jsonData);
             return jsonData;
         }
-        throw new Error(error.message);
+        throw new Error('jkhsdfkdf');
     } catch (error) {
         console.log(error)
     }
