@@ -2,7 +2,7 @@ import { datePicker } from "../constants.js";
 
 // we should restrict the dates onload of the page:
 export function fiveDaysForecast(){
-    const fullDate = new Date('2021-12-29');
+    const fullDate = new Date();
     const year = fullDate.getFullYear()
     const month = fullDate.getMonth()+1
     let date = fullDate.getDate()

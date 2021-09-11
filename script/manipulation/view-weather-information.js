@@ -38,7 +38,7 @@ export function showGeneralInformation(jsonData){
         weatherConditionInfo.textContent = jsonData.current.condition.text;
         dayInfo.textContent = showDayName();
         weatherConditionLogo.src = jsonData.current.condition.icon;
-        temperatureDegree.textContent = Math.floor(jsonData.current.feelslike_c);
+        temperatureDegree.textContent = Math.round(jsonData.current.feelslike_c);
 
         //get the temperature type be C as a default value every time
         temperatureType.textContent = 'C'
@@ -46,18 +46,40 @@ export function showGeneralInformation(jsonData){
             // this function expects the object of temperatures on the desired date
             if (temperatureType.textContent === 'C') {
                 temperatureType.textContent = 'F';
-                temperatureDegree.textContent = Math.floor(jsonData.current.feelslike_f);
+                temperatureDegree.textContent = Math.round(jsonData.current.feelslike_f);
         
             } else {
                 temperatureType.textContent = 'C';
-                temperatureDegree.textContent = Math.floor(jsonData.current.feelslike_c);
+                temperatureDegree.textContent = Math.round(jsonData.current.feelslike_c);
             } 
         }
         temperatureEL.addEventListener('click',changeTempTypeInCurrentMode);
 
     } else if (searchMethod === 'forecast') {
     // here we gonna deal with json data as 'forecast' search Method and for current day
-        weatherConditionInfo.textContent = jsonData.forecast.forecastday[0].day.condition.text;
+        if (timeValue === '') {
+            weatherConditionInfo.textContent = jsonData.forecast.forecastday[0].day.condition.text;
+            dayInfo.textContent = showDayName(dateValue);
+            weatherConditionLogo.src = jsonData.forecast.forecastday[0].day.condition.icon;
+            temperatureDegree.textContent = Math.round(jsonData.forecast.forecastday[0].day.avgtemp_c);
+
+            //get the temperature type be C as a default value every time
+            temperatureType.textContent = 'C'
+            function changeTempTypeInCurrentMode () {
+                // this function expects the object of temperatures on the desired date
+                if (temperatureType.textContent === 'C') {
+                    temperatureType.textContent = 'F';
+                    temperatureDegree.textContent = Math.round(jsonData.forecast.forecastday[0].day.avgtemp_f);
+            
+                } else {
+                    temperatureType.textContent = 'C';
+                    temperatureDegree.textContent = Math.round(jsonData.forecast.forecastday[0].day.avgtemp_c);
+                } 
+            }
+            temperatureEL.addEventListener('click',changeTempTypeInCurrentMode);
+        } else {
+
+        }
     }
     
 }

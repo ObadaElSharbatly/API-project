@@ -33,13 +33,13 @@ input {
     background-color: var(--orange);
     height: var(--field-height);
     min-width: 70px;
-    max-width: 100px;
+    max-width: fit-content;
     color: var(--white);
     text-align: center;
-    padding: 5px;
+    padding: 10px 10px;
     border-radius: var(--radius) var(--radius) 0px var(--radius);
-    font-size: 13pt;
-    letter-spacing: 1px;
+    font-size: 10pt;
+    letter-spacing: .5px;
 }
 
 .btn:hover {

@@ -4,7 +4,7 @@ import { datePicker, locationField, timePicker } from "../constants.js";
 export let searchMethod;
 
 export async function fetchRightData(){
-    let endPointUrl='';
+    let endPointUrl = '';
     
     function creatTheEndpointUrl() {
         // Select the information entered by user
@@ -30,14 +30,14 @@ export async function fetchRightData(){
 
     try {
         creatTheEndpointUrl();
-        console.log(endPointUrl)
+
         const receivedData = await fetch(endPointUrl);
-        if (receivedData.ok) {
+        if (receivedData.ok && receivedData.status === 200) {
             const jsonData = receivedData.json();
             console.log(jsonData);
             return jsonData;
         }
-        throw new Error(error.message);
+        throw new Error('jkhsdfkdf');
     } catch (error) {
         console.log(error)
     }
