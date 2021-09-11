@@ -1,4 +1,5 @@
 #result-section{
+    transition: 2s;
     background-color: var(--header);
     margin-top: 30px ;
     padding: 20px 0px;
@@ -27,4 +28,15 @@
 #temp-type {
     align-self: flex-start;
     font-size: 15pt;
+    color: var(--orange);
+}
+
+#temperature:hover {
+    color: var(--btn-hover) !important;
+    cursor: pointer;
+}
+
+.hide {
+    display: none !important;
+    
 }
