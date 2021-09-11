@@ -11,16 +11,16 @@ You can test the app from [here](https://obadaelsharbatly.github.io/Weather-APP-
 for current time besides past and future. I will follow the [PostNL](https://www.postnl.nl/en/) website style and gonna use [Weather api](https://www.weatherapi.com/) website to get weather information**
 
   ### Must have features:
-  * Design of the app should fits the [PostNL](https://www.postnl.nl/en/) website style.
-  * The weather information at least should show:
-     * Location name
-     * Time
-     * Weather condition
-     * Sample logo of weather
-     * Changeble temperature
-  * User can search about different locations.
-  * User can know the weather of ten days in the future.
-  * User can know weather information for past days.
+  - [x]  Design of the app should fits the [PostNL](https://www.postnl.nl/en/) website style.
+  - [x] The weather information at least should show:
+     - [x] Location name
+     - [x] Time
+     - [x] Weather condition
+     - [x] Sample logo of weather
+     - [x] Changeble temperature
+  - [x] User can search about different locations.
+  - [ ] User can know the weather of five days in the future.
+  - [ ] User can know weather information for five past days.
   * User can change the time to know the weather during the day.
 
 
