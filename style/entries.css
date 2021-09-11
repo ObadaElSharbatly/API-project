@@ -40,6 +40,7 @@ input {
     border-radius: var(--radius) var(--radius) 0px var(--radius);
     font-size: 10pt;
     letter-spacing: .5px;
+    margin-right: 20px;
 }
 
 .btn:hover {

@@ -1,4 +1,4 @@
-import { searchButton } from "./constants.js";
+import { clearButton, datePicker, locationField, searchButton, timePicker } from "./constants.js";
 import { fetchRightData } from "./fetch-functions/fetch-data.js";
 import { stopSearchButton } from "./manipulation/change-search-button.js";
 import { fiveDaysForecast } from "./manipulation/restrict-dates.js";
@@ -18,5 +18,12 @@ export function startApp (){
     });
 }
 
+function clearFields (){
+    locationField.value = '';
+    datePicker.value = '';
+    timePicker.value = '';
+}
+
 searchButton.addEventListener('click', startApp);
+clearButton.addEventListener('click', clearFields);
 window.addEventListener('load', fiveDaysForecast);

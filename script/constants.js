@@ -3,6 +3,7 @@ export const locationField = document.querySelector('#select-location');
 export const datePicker    = document.querySelector('#select-date');
 export const timePicker    = document.querySelector('#select-time');
 export const searchButton = document.querySelector('#search-btn')
+export const clearButton = document.querySelector('#clear-btn')
 
 // general weather information.
 export const generalInfoSection   = document.querySelector('#result-section');
