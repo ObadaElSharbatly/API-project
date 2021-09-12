@@ -9,13 +9,21 @@ i {
     cursor: pointer;
 }
 
-input {
+input, select {
+    border: 1.5px solid var(--header-border);
     border-radius: var(--radius) ;
     padding: 5px;
     color: var(--dark-blue);
     font-weight: 400;
     height: var(--field-height);
 }
+
+input:hover,
+select:hover {
+    box-shadow: 0px 0px 2px 0.5px var(--orange);
+    cursor: pointer;
+}
+
 
 
 .user-entry {
@@ -25,8 +33,11 @@ input {
 }
 
 #select-location {
-    width: calc(100% - 20px - 5px - 3px);
-    
+    width: calc(100% - 20px - 5px - 3px);  
+}
+
+#select-location:hover {
+    cursor: text;
 }
 
 .btn{

@@ -1,27 +1,8 @@
-import { cityNameInfo, datePicker, dayInfo, generalInfoSection, locationField, temperatureDegree, temperatureEL, temperatureType, timePicker, weatherConditionInfo, weatherConditionLogo } from "../constants.js";
+import { cityNameInfo, clockInfo, datePicker, dayInfo, generalInfoSection, locationField, temperatureDegree, temperatureEL, temperatureType, timePicker, weatherConditionInfo, weatherConditionLogo } from "../constants.js";
 import { searchMethod } from "../fetch-functions/fetch-data.js";
+import { showDayName, showRightTime } from "../Helper-functions/date.js";
+import { currentDate } from "./restrict-dates.js";
 
-function showDayName (date){
-    // this function expects a special date & time or it will select the current date
-    let dateInfo;
-    if(date){
-        dateInfo = new Date(date);
-    } else {
-        dateInfo = new Date();
-    }
-    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    const day = dateInfo.getDay();
-    const dayName = days[day];
-
-    const h = dateInfo.getHours();
-    const m =dateInfo.getMinutes();
-    const s = dateInfo.getSeconds();
-
-    const timeFormat = (x) => x < 10 ? '0' + x : x;
-    const timeValue = `${timeFormat(h)}:${timeFormat(m)}:${timeFormat(s)}`;
-
-    return `${dayName} (( ${timeValue} ))` 
-}
 
 export function showGeneralInformation(jsonData){
     generalInfoSection.classList.remove('hide')
@@ -36,13 +17,14 @@ export function showGeneralInformation(jsonData){
     if(searchMethod === 'current'){
 
         weatherConditionInfo.textContent = jsonData.current.condition.text;
-        dayInfo.textContent = showDayName();
+        dayInfo.textContent = `${showDayName()} - ${currentDate}`;
+        clockInfo.textContent = showRightTime();
         weatherConditionLogo.src = jsonData.current.condition.icon;
         temperatureDegree.textContent = Math.round(jsonData.current.feelslike_c);
 
         //get the temperature type be C as a default value every time
         temperatureType.textContent = 'C'
-        function changeTempTypeInCurrentMode () {
+        const changeTempTypeInCurrentMode = () => {
             // this function expects the object of temperatures on the desired date
             if (temperatureType.textContent === 'C') {
                 temperatureType.textContent = 'F';
@@ -54,18 +36,27 @@ export function showGeneralInformation(jsonData){
             } 
         }
         temperatureEL.addEventListener('click',changeTempTypeInCurrentMode);
+        
+    } 
 
-    } else if (searchMethod === 'forecast') {
-    // here we gonna deal with json data as 'forecast' search Method and for current day
+
+
+
+    /* Show information in case of forecast weather data request */
+    else if (searchMethod === 'forecast') {
+        
+        // when user doesn't give the special time we gonna show general 'forecast' for whole day
         if (timeValue === '') {
+
             weatherConditionInfo.textContent = jsonData.forecast.forecastday[0].day.condition.text;
-            dayInfo.textContent = showDayName(dateValue);
+            dayInfo.textContent = `${showDayName(dateValue)} - ${dateValue}`;
+            clockInfo.remove();
             weatherConditionLogo.src = jsonData.forecast.forecastday[0].day.condition.icon;
             temperatureDegree.textContent = Math.round(jsonData.forecast.forecastday[0].day.avgtemp_c);
 
             //get the temperature type be C as a default value every time
             temperatureType.textContent = 'C'
-            function changeTempTypeInCurrentMode () {
+            const changeTempTypeInCurrentMode = () => {
                 // this function expects the object of temperatures on the desired date
                 if (temperatureType.textContent === 'C') {
                     temperatureType.textContent = 'F';
@@ -77,8 +68,10 @@ export function showGeneralInformation(jsonData){
                 } 
             }
             temperatureEL.addEventListener('click',changeTempTypeInCurrentMode);
-        } else {
-
+        } 
+        
+        else {
+            
         }
     }
     
