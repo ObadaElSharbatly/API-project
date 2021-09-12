@@ -13,15 +13,20 @@ export function showDayName (date){
     return dayName;
 }
 
-export function showRightTime(){
+export function showRightTime(epoch){
     // this function returns the current time
-    const dateInfo = new Date();
+    let dateInfo;
+    if(epoch){
+        dateInfo = new Date(epoch);
+    } else {
+        dateInfo = new Date();
+    }
+
     const h = dateInfo.getHours();
-    const m =dateInfo.getMinutes();
-    const s = dateInfo.getSeconds();
+    const m = dateInfo.getMinutes();
 
     const timeFormat = (x) => x < 10 ? '0' + x : x;
-    const timeValue = `${timeFormat(h)}:${timeFormat(m)}:${timeFormat(s)}`;
+    const timeValue = `${timeFormat(h)}:${timeFormat(m)}`;
 
     return timeValue;
 }

@@ -18,14 +18,29 @@ function creatTheEndpointUrl() {
     const time = `&hour=${timeValue}`
 
     if(locationValue !== '' && dateValue === '' && timeValue === ''){
+
         searchMethod = 'current'
         return `${url}${searchMethod}.json?${APIKey}${locationPa}`;
 
-    } else if (locationValue !== '' && dateValue >= currentDate) {
+    } 
+    else if (locationValue !== '' && dateValue >= currentDate) {
+
+        searchMethod = 'forecast'
         if (timeValue === "") {
-            searchMethod = 'forecast'
             return `${url}${searchMethod}.json?${APIKey}${locationPa}${date}`;
-        } else {  
+        }
+        else {  
+            return `${url}${searchMethod}.json?${APIKey}${locationPa}${date}${time}`;
+        }
+
+    } 
+    else if (locationValue !== '' && dateValue < currentDate){
+
+        searchMethod = 'history'
+        if (timeValue === "") {
+            return `${url}${searchMethod}.json?${APIKey}${locationPa}${date}`;
+        } 
+        else {  
             return `${url}${searchMethod}.json?${APIKey}${locationPa}${date}${time}`;
         }
     }
@@ -43,8 +58,13 @@ export async function fetchRightData(){
             console.log(jsonData);
             return jsonData;
         }
-        throw new Error('jkhsdfkdf');
+        //throw new Error("make sure the end point url is right");
     } catch (error) {
-        console.log(error)
+        console.log(error.status)
+        console.log('API key ', APIKey);
+        console.log('url ', url)
+        console.log('location ', locationPa)
+        console.log('date ', date)
+        console.log('time ', time)
     }
 }
