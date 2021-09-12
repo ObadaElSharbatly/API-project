@@ -54,6 +54,8 @@ nav {
     padding: 0px 30%;
 }
 
+
+
 .container>div {
     max-height: 100%;
 }
@@ -90,4 +92,12 @@ nav {
 
 .row {
     flex-direction: row;
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        padding: 0px 10%;
+        display: block;
+    }
+    
 }

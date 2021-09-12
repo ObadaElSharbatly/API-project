@@ -38,20 +38,21 @@
     <!-- ------------- User choices section ------------- -->
     <Section class="container">
             <!-- location -->
-        <div class="user-entry">
+        <div class="user-entry" id="location-div">
             <label for="select-location"> What is your location ?</label><br>
             <input type="text" placeholder="Type City / Country" name="select-location" id="select-location" required>
             <i class="bi bi-geo-alt-fill" id="location-icon" title="Set the current location"></i>
+            
         </div>
         
         <div class="flex spc-btw">
             <!-- date -->
-            <div class="user-entry">
+            <div class="user-entry" id="date-div">
                 <label for="select-date"> Select date</label><br>
                 <input type="date" placeholder="Type City / Country" name="select-date" id="select-date">
             </div>
             <!-- Time -->
-            <div class="user-entry">
+            <div class="user-entry" id="time-div">
                 <label for="select-time"> Select time slot</label><br>
                 <select name="time" id="select-time">
                     <option value="" disabled selected hidden>Select time slot</option>

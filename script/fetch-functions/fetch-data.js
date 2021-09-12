@@ -1,5 +1,8 @@
 import { datePicker, locationField, timePicker } from "../constants.js";
+import { stopSearchButton } from "../manipulation/change-search-button.js";
 import { currentDate } from "../manipulation/restrict-dates.js";
+import { invalidCityName } from "../manipulation/show-errors.js";
+import { showGeneralInformation } from "../manipulation/view-weather-information.js";
 
 /* we need this to be global variable */
 export let searchMethod;
@@ -46,25 +49,54 @@ function creatTheEndpointUrl() {
     }
 }
 
-export async function fetchRightData(){
+export function fetchRightData(){
+
+    const endPointUrl = creatTheEndpointUrl();
+    console.log(endPointUrl)
+
+    fetch(endPointUrl).then((receivedData)=>{
+        console.log('receivedData', receivedData)
+        if (!receivedData.ok){
+            const jsonData = receivedData.json();
+            console.log('json data failed', jsonData);
+            throw new Error(jsonData.error.message);
+        }
+        return receivedData.json();
+    })
+    .then((jsonWeatherData) => {
+        console.log('json data success', jsonWeatherData)
+        // this function do the suitable behavior with the jason data.
+        showGeneralInformation(jsonWeatherData);
+        // we should change the 'search' button to reload the page
+        stopSearchButton();
+    })
+
+    .catch((error)=>{
+        console.log('the error is', error)
+        invalidCityName();
+    })
+}
+
+/* export async function fetchRightData(){
 
     try {
         const endPointUrl = creatTheEndpointUrl();
         console.log(endPointUrl)
 
         const receivedData = await fetch(endPointUrl);
-        if (receivedData.ok && receivedData.status === 200) {
-            const jsonData = receivedData.json();
+        // if (receivedData.ok) {
+            const jsonData = await receivedData.json();
+            if (jsonData.error){
+                console.log(jsonData);
+                throw new Error(jsonData.error.message);
+            }
             console.log(jsonData);
             return jsonData;
-        }
-        //throw new Error("make sure the end point url is right");
+        // }
+        
     } catch (error) {
-        console.log(error.status)
-        console.log('API key ', APIKey);
-        console.log('url ', url)
-        console.log('location ', locationPa)
-        console.log('date ', date)
-        console.log('time ', time)
+        console.log(error.message);
+        console.log(error);
+
     }
-}
+} */

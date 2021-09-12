@@ -70,3 +70,8 @@ section > div.flex > div.user-entry {
 section, section>div.flex {
     margin-top: var(--margin-t);
 }
+
+#location-div > h5 {
+    color: red;
+
+}
