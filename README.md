@@ -19,9 +19,9 @@ for current time besides past and future. I will follow the [PostNL](https://www
      - [x] Sample logo of weather
      - [x] Changeble temperature
   - [x] User can search about different locations.
-  - [ ] User can know the weather of five days in the future.
-  - [ ] User can know weather information for five past days.
-  * User can change the time to know the weather during the day.
+  - [x] User can know the weather of five days in the future.
+  - [x] User can know weather information for five past days.
+  - [x] User can change the time to know the weather during the day.
 
 
   ### nice to have features:
@@ -30,4 +30,6 @@ for current time besides past and future. I will follow the [PostNL](https://www
   * Design different background images fit's with [PostNL](https://www.postnl.nl/en/) website style and make it change with temperature.
   * Make special design for mobile like aside menu.
   * Show the location of user on the Map.
+  * User can change the time to know the weather during the day.
+
   
