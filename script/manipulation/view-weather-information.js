@@ -17,20 +17,19 @@ export function showGeneralInformation(jsonData){
     if(searchMethod === 'current'){
 
         weatherConditionInfo.textContent = jsonData.current.condition.text;
-        dayInfo.textContent = `${showDayName()} - ${currentDate}`;
-        clockInfo.textContent = showRightTime();
         weatherConditionLogo.src = jsonData.current.condition.icon;
+        dayInfo.innerHTML = `${showDayName()} &nbsp; - &nbsp;  ${currentDate}`;
+        clockInfo.textContent = `${showRightTime()}`;
         temperatureDegree.textContent = Math.round(jsonData.current.feelslike_c);
 
-        //get the temperature type be C as a default value every time
-        temperatureType.textContent = 'C'
         const changeTempTypeInCurrentMode = () => {
-            // this function expects the object of temperatures on the desired date
+
             if (temperatureType.textContent === 'C') {
                 temperatureType.textContent = 'F';
                 temperatureDegree.textContent = Math.round(jsonData.current.feelslike_f);
         
-            } else {
+            } 
+            else {
                 temperatureType.textContent = 'C';
                 temperatureDegree.textContent = Math.round(jsonData.current.feelslike_c);
             } 
@@ -40,29 +39,25 @@ export function showGeneralInformation(jsonData){
     } 
 
 
-
-
     /* Show information in case of forecast weather data request */
-    else if (searchMethod === 'forecast') {
-        
+    else if (searchMethod === 'forecast' || searchMethod === 'history') {
+        dayInfo.innerHTML = `${showDayName(dateValue)} &nbsp; - &nbsp; ${dateValue}`;
         // when user doesn't give the special time we gonna show general 'forecast' for whole day
         if (timeValue === '') {
 
             weatherConditionInfo.textContent = jsonData.forecast.forecastday[0].day.condition.text;
-            dayInfo.textContent = `${showDayName(dateValue)} - ${dateValue}`;
-            clockInfo.remove();
             weatherConditionLogo.src = jsonData.forecast.forecastday[0].day.condition.icon;
+            clockInfo.remove();
             temperatureDegree.textContent = Math.round(jsonData.forecast.forecastday[0].day.avgtemp_c);
 
-            //get the temperature type be C as a default value every time
-            temperatureType.textContent = 'C'
             const changeTempTypeInCurrentMode = () => {
-                // this function expects the object of temperatures on the desired date
+
                 if (temperatureType.textContent === 'C') {
                     temperatureType.textContent = 'F';
                     temperatureDegree.textContent = Math.round(jsonData.forecast.forecastday[0].day.avgtemp_f);
             
-                } else {
+                } 
+                else {
                     temperatureType.textContent = 'C';
                     temperatureDegree.textContent = Math.round(jsonData.forecast.forecastday[0].day.avgtemp_c);
                 } 
@@ -70,8 +65,26 @@ export function showGeneralInformation(jsonData){
             temperatureEL.addEventListener('click',changeTempTypeInCurrentMode);
         } 
         
+        // when user give a day from now and 5 days ahead with 'specific time'
         else {
+            weatherConditionInfo.textContent = jsonData.forecast.forecastday[0].hour[0].condition.text;
+            weatherConditionLogo.src = jsonData.forecast.forecastday[0].hour[0].condition.icon;
+            clockInfo.textContent = showRightTime(jsonData.forecast.forecastday[0].hour[0].time);
+            temperatureDegree.textContent = Math.round(jsonData.forecast.forecastday[0].hour[0].feelslike_c);
+
+            const changeTempTypeInCurrentMode = () => {
+
+                if (temperatureType.textContent === 'C') {
+                    temperatureType.textContent = 'F';
+                    temperatureDegree.textContent = Math.round(jsonData.forecast.forecastday[0].hour[0].feelslike_f);
             
+                } 
+                else {
+                    temperatureType.textContent = 'C';
+                    temperatureDegree.textContent = Math.round(jsonData.forecast.forecastday[0].hour[0].feelslike_c);
+                } 
+            }
+            temperatureEL.addEventListener('click',changeTempTypeInCurrentMode);
         }
     }
     
