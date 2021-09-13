@@ -1,6 +1,7 @@
 import { cityNameInfo, clockInfo, datePicker, dayInfo, generalInfoSection, locationField, temperatureDegree, temperatureEL, temperatureType, timePicker, weatherConditionInfo, weatherConditionLogo } from "../constants.js";
 import { searchMethod } from "../fetch-functions/fetch-data.js";
 import { showDayName, showRightTime } from "../Helper-functions/date.js";
+import { setCurrentWeatherDetails } from "./current-details.js";
 import { currentDate } from "./restrict-dates.js";
 
 
@@ -35,6 +36,9 @@ export function showGeneralInformation(jsonData){
             } 
         }
         temperatureEL.addEventListener('click',changeTempTypeInCurrentMode);
+
+        /* show more details */
+        setCurrentWeatherDetails(jsonData.current);
         
     } 
 

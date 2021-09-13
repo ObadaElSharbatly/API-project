@@ -17,3 +17,6 @@ export const weatherConditionLogo = document.querySelector('#condition-logo');
 export const temperatureEL        = document.querySelector('#temperature');
 export const temperatureDegree    = document.querySelector('#temp-deg');
 export const temperatureType      = document.querySelector('#temp-type');
+
+// more details section information
+export const moreDetailsSection   = document.querySelector('#more-details-section');

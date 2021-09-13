@@ -2,7 +2,7 @@
     transition: 2s;
     background-color: var(--header);
     margin-top: 30px ;
-    padding: 20px 0px;
+    /* padding: 20px 0px; */
 }
 
 #result-section h2 {
@@ -48,17 +48,20 @@
 
     
 }
-.Icon-div{
-    width: 45%;
+.icon-div{
+    min-width: 47%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.Icon-div>div {
+.icon-div>div {
     width: 100%;
     font-size: 14pt;
     color: var(--dark-blue);
+    
 }
 
-.Icon-div>div>i {
+.icon-div>div>i {
     font-size: 20pt ;
     color: var(--orange);   
 }
