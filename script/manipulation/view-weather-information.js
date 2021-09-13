@@ -2,6 +2,7 @@ import { cityNameInfo, clockInfo, datePicker, dayInfo, generalInfoSection, locat
 import { searchMethod } from "../fetch-functions/fetch-data.js";
 import { showDayName, showRightTime } from "../Helper-functions/date.js";
 import { setCurrentWeatherDetails } from "./current-details.js";
+import { showGeneralDayDetails } from "./forecast-history-details.js";
 import { currentDate } from "./restrict-dates.js";
 
 
@@ -18,20 +19,20 @@ export function showGeneralInformation(jsonData){
     if(searchMethod === 'current'){
 
         weatherConditionInfo.textContent = jsonData.current.condition.text;
-        weatherConditionLogo.src = jsonData.current.condition.icon;
-        dayInfo.innerHTML = `${showDayName()} &nbsp; - &nbsp;  ${currentDate}`;
-        clockInfo.textContent = `${showRightTime()}`;
-        temperatureDegree.textContent = Math.round(jsonData.current.feelslike_c);
+        weatherConditionLogo.src         = jsonData.current.condition.icon;
+        dayInfo.innerHTML                = `${showDayName()} &nbsp; - &nbsp;  ${currentDate}`;
+        clockInfo.textContent            = `${showRightTime()}`;
+        temperatureDegree.textContent    = Math.round(jsonData.current.feelslike_c);
 
         const changeTempTypeInCurrentMode = () => {
 
             if (temperatureType.textContent === 'C') {
-                temperatureType.textContent = 'F';
+                temperatureType.textContent   = 'F';
                 temperatureDegree.textContent = Math.round(jsonData.current.feelslike_f);
         
             } 
             else {
-                temperatureType.textContent = 'C';
+                temperatureType.textContent   = 'C';
                 temperatureDegree.textContent = Math.round(jsonData.current.feelslike_c);
             } 
         }
@@ -50,23 +51,25 @@ export function showGeneralInformation(jsonData){
         if (timeValue === '') {
 
             weatherConditionInfo.textContent = jsonData.forecast.forecastday[0].day.condition.text;
-            weatherConditionLogo.src = jsonData.forecast.forecastday[0].day.condition.icon;
+            weatherConditionLogo.src         = jsonData.forecast.forecastday[0].day.condition.icon;
             clockInfo.remove();
-            temperatureDegree.textContent = Math.round(jsonData.forecast.forecastday[0].day.avgtemp_c);
+            temperatureDegree.textContent    = Math.round(jsonData.forecast.forecastday[0].day.avgtemp_c);
 
             const changeTempTypeInCurrentMode = () => {
 
                 if (temperatureType.textContent === 'C') {
-                    temperatureType.textContent = 'F';
+                    temperatureType.textContent   = 'F';
                     temperatureDegree.textContent = Math.round(jsonData.forecast.forecastday[0].day.avgtemp_f);
             
                 } 
                 else {
-                    temperatureType.textContent = 'C';
+                    temperatureType.textContent   = 'C';
                     temperatureDegree.textContent = Math.round(jsonData.forecast.forecastday[0].day.avgtemp_c);
                 } 
             }
             temperatureEL.addEventListener('click',changeTempTypeInCurrentMode);
+
+            showGeneralDayDetails(jsonData.forecast.forecastday[0]);
         } 
         
         // when user give a day from now and 5 days ahead with 'specific time'
