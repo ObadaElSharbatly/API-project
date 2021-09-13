@@ -47,7 +47,8 @@ select:hover {
     max-width: fit-content;
     color: var(--white);
     text-align: center;
-    padding: 10px 10px;
+    padding: 0px 10px;
+    border-width: 0px;
     border-radius: var(--radius) var(--radius) 0px var(--radius);
     font-size: 10pt;
     letter-spacing: .5px;

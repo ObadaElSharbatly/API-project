@@ -10,5 +10,5 @@ export function stopSearchButton () {
     // change the button to reload the page
     searchButton.removeEventListener('click', startApp);
     searchButton.addEventListener('click', ()=>{location.reload()})
-    searchButton.textContent = 'change choices'
+    searchButton.innerHTML = `change choices <i class="bi bi-arrow-repeat" style="color: white;"> </i>`
 }
