@@ -72,7 +72,14 @@ export function fetchRightData(){
     })
 
     .catch((error)=>{
-        console.log('the error is', error)
+        if (error.message == 'Failed to fetch') {
+            return console.log('the error is', error.message)
+            
+        }
+        // console.log('the error is', error)
+        // console.log('the error is', error.TypeError)
+        // console.log('type of error', typeof error)
+
         invalidCityName();
     })
 }

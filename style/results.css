@@ -39,3 +39,34 @@
 .hide {
     display: none !important;  
 }
+
+/* More details Section */
+#more-details-section {
+    background-color: var(--header);
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    
+}
+.Icon-div{
+    width: 45%;
+}
+
+.Icon-div>div {
+    width: 100%;
+    font-size: 14pt;
+    color: var(--dark-blue);
+}
+
+.Icon-div>div>i {
+    font-size: 20pt ;
+    color: var(--orange);   
+}
+
+
+hr{
+    background-color: var(--orange);
+    height: 1px;
+    width: 100%;
+    border: none
+}

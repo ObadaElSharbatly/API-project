@@ -4,7 +4,7 @@ export function invalidCityName (){
     if (!document.querySelector('#invalid-city-error')){
     const invalidCity = document.createElement('h5');
     invalidCity.id = 'invalid-city-error'
-    invalidCity.textContent = 'Valid city is required';
+    invalidCity.textContent = 'Valid city name is required';
     locationDiv.appendChild(invalidCity);
     locationField.addEventListener('input', clearInvalidCityNameError);
     }

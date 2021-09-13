@@ -68,7 +68,7 @@ section > div.flex > div.user-entry {
     margin-top: var(--margin-t);
 }
 section, section>div.flex {
-    margin-top: var(--margin-t);
+    padding-top: var(--margin-t);
 }
 
 #location-div > h5 {
