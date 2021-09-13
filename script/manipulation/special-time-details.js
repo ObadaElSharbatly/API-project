@@ -1,51 +1,55 @@
+import { moreDetailsSection } from "../constants.js";
+
 export function showDetailsForSpecificTime(rightObject){
     /* this function expect the right object from json data */
     moreDetailsSection.classList.remove('hide');
 
     const currentData = [
         {
-            name: 'Max temperature',
-            iconClass: 'bi bi-thermometer-high',
-            valueText: `${rightObject.day.maxtemp_c}°`,
-            unitText: 'Cel'
+            name: 'wind speed',
+            iconClass: 'bi bi-wind',
+            valueText: rightObject.wind_kph,
+            unitText: 'K/h'
         },
         {
-            name: 'Min temperature',
-            iconClass: 'bi bi-thermometer-snow',
-            valueText: `${rightObject.day.mintemp_c}°`,
-            unitText: 'Cel'
+            name: 'wind direction',
+            iconClass: 'bi bi-compass-fill',
+            valueText: rightObject.wind_dir,
+            unitText: `${rightObject.wind_degree}°`
         },
         {
             name: 'Humidity',
             iconClass: 'bi bi-moisture',
-            valueText: rightObject.day.avghumidity,
+            valueText: rightObject.humidity,
             unitText: '&nbsp;&nbsp;%'
         },
         {
-            name: ' Average visibility',
+            name: 'Visibility',
             iconClass: 'bi bi-cloud-haze-fill',
-            valueText: rightObject.day.avgvis_km,
+            valueText: rightObject.vis_km,
             unitText: ' Km'
         },
         {
-            name: 'Sunrise',
-            iconClass: 'bi bi-sunrise-fill',
-            valueText: rightObject.astro.sunrise,
-            unitText: '&nbsp;&nbsp;&nbsp;'
+            name: 'Chance of rain',
+            iconClass: 'bi bi-cloud-drizzle-fill',
+            valueText: rightObject.chance_of_rain,
+            unitText: '&nbsp;&nbsp;%'
         },
         
         {
-            name: 'Sunset',
-            iconClass: 'bi bi-sunset-fill',
-            valueText: rightObject.astro.sunset,
+            name: 'Cloud',
+            iconClass: 'bi bi-clouds-fill',
+            valueText: rightObject.cloud,
             unitText: '&nbsp;&nbsp;&nbsp;'
         }
     ]
+
   for (const key of currentData) {
 
     // start put the right data in the Div.
     const iconDiv = document.createElement('div');
     iconDiv.classList.add('icon-div', 'flex', 'column');
+
     iconDiv.innerHTML = 
     `<div class="flex spc-btw" title='${key.name}' >
         <i class='${key.iconClass}'></i>
@@ -53,6 +57,7 @@ export function showDetailsForSpecificTime(rightObject){
         <p class="unit">${key.unitText}</p>
     </div> 
     <hr>`;
+    
     moreDetailsSection.appendChild(iconDiv);
   }
 }

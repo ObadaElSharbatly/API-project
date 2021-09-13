@@ -10,15 +10,15 @@ export let searchMethod;
 function creatTheEndpointUrl() {
     // Select the information entered by user
     const locationValue = locationField.value;
-    const dateValue = datePicker.value;
-    const timeValue = timePicker.value;
+    const dateValue     = datePicker.value;
+    const timeValue     = timePicker.value;
     
     
-    const APIKey = 'key=b458fd088f5b42c082691547210409';
-    const url = `https://api.weatherapi.com/v1/`;
+    const APIKey     = 'key=b458fd088f5b42c082691547210409';
+    const url        = `https://api.weatherapi.com/v1/`;
     const locationPa = `&q=${locationValue}`;
-    const date = `&dt=${dateValue}`
-    const time = `&hour=${timeValue}`
+    const date       = `&dt=${dateValue}`
+    const time       = `&hour=${timeValue}`
 
     if(locationValue !== '' && dateValue === '' && timeValue === ''){
 
@@ -46,6 +46,9 @@ function creatTheEndpointUrl() {
         else {  
             return `${url}${searchMethod}.json?${APIKey}${locationPa}${date}${time}`;
         }
+    } 
+    else {
+        invalidCityName();
     }
 }
 
@@ -54,13 +57,14 @@ export function fetchRightData(){
     const endPointUrl = creatTheEndpointUrl();
     console.log(endPointUrl)
 
-    fetch(endPointUrl).then((receivedData)=>{
-        console.log('receivedData', receivedData)
-        if (!receivedData.ok){
+    fetch(endPointUrl)
+    .then((receivedData)=>{
+        if (!receivedData.ok) {
             const jsonData = receivedData.json();
             console.log('json data failed', jsonData);
             throw new Error(jsonData.error.message);
         }
+        
         return receivedData.json();
     })
     .then((jsonWeatherData) => {
@@ -75,35 +79,10 @@ export function fetchRightData(){
         if (error.message == 'Failed to fetch') {
             return console.log('the error is', error.message)
             
+        } 
+        else {
+            console.error(error);
+            invalidCityName();
         }
-        // console.log('the error is', error)
-        // console.log('the error is', error.TypeError)
-        // console.log('type of error', typeof error)
-        console.error(error);
-        invalidCityName();
     })
 }
-
-/* export async function fetchRightData(){
-
-    try {
-        const endPointUrl = creatTheEndpointUrl();
-        console.log(endPointUrl)
-
-        const receivedData = await fetch(endPointUrl);
-        // if (receivedData.ok) {
-            const jsonData = await receivedData.json();
-            if (jsonData.error){
-                console.log(jsonData);
-                throw new Error(jsonData.error.message);
-            }
-            console.log(jsonData);
-            return jsonData;
-        // }
-        
-    } catch (error) {
-        console.log(error.message);
-        console.log(error);
-
-    }
-} */

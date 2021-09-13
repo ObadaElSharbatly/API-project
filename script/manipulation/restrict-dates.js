@@ -19,18 +19,22 @@ export function fiveDaysForecast(){
     // match the max date
     if (maxDate > 30 && month !== 12) {
         maxDate = `${dateFormat(year)}-${dateFormat( month + 1)}-${dateFormat(maxDate - 30)}`;
-    } else if (maxDate > 30 && month === 12) {
+    }
+    else if (maxDate > 30 && month === 12) {
         maxDate = `${dateFormat(year+1)}-01-${dateFormat(maxDate - 30)}`;
-    } else {
+    }
+    else {
         maxDate = `${dateFormat(year)}-${dateFormat( month )}-${dateFormat(maxDate)}`;
     }
 
     // match the min date
     if (minDate <= 0 && month !== 1) {
         minDate = `${dateFormat(year)}-${dateFormat( month - 1)}-${dateFormat(minDate + 30)}`;
-    } else if (minDate <= 0 && month === 1) {
+    }
+    else if (minDate <= 0 && month === 1) {
         minDate = `${dateFormat(year-1)}-12-${dateFormat(minDate + 30)}`;
-    } else {
+    }
+    else {
         minDate = `${dateFormat(year)}-${dateFormat( month )}-${dateFormat(minDate)}`;
     }
 

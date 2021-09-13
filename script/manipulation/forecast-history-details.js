@@ -43,11 +43,13 @@ export function showGeneralDayDetails(rightObject){
             unitText: '&nbsp;&nbsp;&nbsp;'
         }
     ]
+    
   for (const key of currentData) {
 
     // start put the right data in the Div.
     const iconDiv = document.createElement('div');
     iconDiv.classList.add('icon-div', 'flex', 'column');
+
     iconDiv.innerHTML = 
     `<div class="flex spc-btw" title='${key.name}' >
         <i class='${key.iconClass}'></i>
@@ -55,6 +57,7 @@ export function showGeneralDayDetails(rightObject){
         <p class="unit">${key.unitText}</p>
     </div> 
     <hr>`;
+
     moreDetailsSection.appendChild(iconDiv);
   }
 }
