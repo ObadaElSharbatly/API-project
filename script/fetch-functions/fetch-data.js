@@ -70,8 +70,7 @@ export function fetchRightData(){
         console.log('json data success', jsonWeatherData)
         // this function do the suitable behavior with the jason data.
         showGeneralInformation(jsonWeatherData);
-        // we should change the 'search' button to reload the page
-        // stopSearchButton();
+        
     })
 
     .catch((error)=>{
@@ -87,6 +86,8 @@ export function fetchRightData(){
         else if (error.message === 'No matching location found.'){
             console.log(error);
             invalidCityName(error.message);
+        } else {
+            throw error;
         }
         
     })

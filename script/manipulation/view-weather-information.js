@@ -54,7 +54,7 @@ export function showGeneralInformation(jsonData){
             tempELHasEvenListener = true;
 
              /* show more details */
-            showGeneralDayDetails(jsonData.forecast.forecastday[0]);
+            setWeatherDetails(jsonData.forecast.forecastday[0]);
         } 
         
         // when user give a day from now and 5 days ahead with 'specific time'
@@ -71,7 +71,7 @@ export function showGeneralInformation(jsonData){
             tempELHasEvenListener = true;
             
              /* show more details */
-            showDetailsForSpecificTime(jsonData.forecast.forecastday[0].hour[0]);
+            setWeatherDetails(jsonData.forecast.forecastday[0].hour[0]);
         }
     }
     

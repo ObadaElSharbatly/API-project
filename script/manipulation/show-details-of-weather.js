@@ -7,142 +7,135 @@ export function setWeatherDetails (rightObject) {
     moreDetailsSection.classList.remove('hide');
     moreDetailsSection.innerHTML='';
     /* this function expect the right object from json data */
-    
-    const currentData = [
-        {
-            name: 'wind speed',
-            iconClass: 'bi bi-wind',
-            valueText: rightObject.wind_kph,
-            unitText: 'K/h'
-        },
-        {
-            name: 'wind direction',
-            iconClass: 'bi bi-compass-fill',
-            valueText: rightObject.wind_dir,
-            unitText: `${rightObject.wind_degree}°`
-        },
-        {
-            name: 'Humidity',
-            iconClass: 'bi bi-moisture',
-            valueText: rightObject.humidity,
-            unitText: '&nbsp;&nbsp;%'
-        },
-        {
-            name: 'Pressure',
-            iconClass: 'bi bi-speedometer',
-            valueText: rightObject.pressure_in,
-            unitText: ' Pa'
-        },
-        {
-            name: 'Visibility',
-            iconClass: 'bi bi-cloud-haze-fill',
-            valueText: rightObject.vis_km,
-            unitText: ' Km'
-        },
-        {
-            name: 'Cloud',
-            iconClass: 'bi bi-clouds-fill',
-            valueText: rightObject.cloud,
-            unitText: '&nbsp;&nbsp;&nbsp;'
-        }
-    ]
-    
-    const forecastData = [
-        {
-            name: 'Max temperature',
-            iconClass: 'bi bi-thermometer-high',
-            valueText: `${rightObject.day.maxtemp_c}°`,
-            unitText: 'Cel'
-        },
-        {
-            name: 'Min temperature',
-            iconClass: 'bi bi-thermometer-snow',
-            valueText: `${rightObject.day.mintemp_c}°`,
-            unitText: 'Cel'
-        },
-        {
-            name: 'Humidity',
-            iconClass: 'bi bi-moisture',
-            valueText: rightObject.day.avghumidity,
-            unitText: '&nbsp;&nbsp;%'
-        },
-        {
-            name: ' Average visibility',
-            iconClass: 'bi bi-cloud-haze-fill',
-            valueText: rightObject.day.avgvis_km,
-            unitText: ' Km'
-        },
-        {
-            name: 'Sunrise',
-            iconClass: 'bi bi-sunrise-fill',
-            valueText: rightObject.astro.sunrise,
-            unitText: '&nbsp;&nbsp;&nbsp;'
-        },
-        
-        {
-            name: 'Sunset',
-            iconClass: 'bi bi-sunset-fill',
-            valueText: rightObject.astro.sunset,
-            unitText: '&nbsp;&nbsp;&nbsp;'
-        }
-    ] 
-
-    const specialTimeData = [
-        {
-            name: 'wind speed',
-            iconClass: 'bi bi-wind',
-            valueText: rightObject.wind_kph,
-            unitText: 'K/h'
-        },
-        {
-            name: 'wind direction',
-            iconClass: 'bi bi-compass-fill',
-            valueText: rightObject.wind_dir,
-            unitText: `${rightObject.wind_degree}°`
-        },
-        {
-            name: 'Humidity',
-            iconClass: 'bi bi-moisture',
-            valueText: rightObject.humidity,
-            unitText: '&nbsp;&nbsp;%'
-        },
-        {
-            name: 'Visibility',
-            iconClass: 'bi bi-cloud-haze-fill',
-            valueText: rightObject.vis_km,
-            unitText: ' Km'
-        },
-        {
-            name: 'Chance of rain',
-            iconClass: 'bi bi-cloud-drizzle-fill',
-            valueText: rightObject.chance_of_rain,
-            unitText: '&nbsp;&nbsp;%'
-        },
-        
-        {
-            name: 'Cloud',
-            iconClass: 'bi bi-clouds-fill',
-            valueText: rightObject.cloud,
-            unitText: '&nbsp;&nbsp;&nbsp;'
-        }
-    ]
-    
     // here we choose the right array to use the right data.
-    let objectName;
+    let weatherDetails;
     if(searchMethod === 'current') {
-        objectName = currentData;
+        weatherDetails = [
+            {
+                name: 'wind speed',
+                iconClass: 'bi bi-wind',
+                valueText: rightObject.wind_kph,
+                unitText: 'K/h'
+            },
+            {
+                name: 'wind direction',
+                iconClass: 'bi bi-compass-fill',
+                valueText: rightObject.wind_dir,
+                unitText: `${rightObject.wind_degree}°`
+            },
+            {
+                name: 'Humidity',
+                iconClass: 'bi bi-moisture',
+                valueText: rightObject.humidity,
+                unitText: '&nbsp;&nbsp;%'
+            },
+            {
+                name: 'Pressure',
+                iconClass: 'bi bi-speedometer',
+                valueText: rightObject.pressure_in,
+                unitText: ' Pa'
+            },
+            {
+                name: 'Visibility',
+                iconClass: 'bi bi-cloud-haze-fill',
+                valueText: rightObject.vis_km,
+                unitText: ' Km'
+            },
+            {
+                name: 'Cloud',
+                iconClass: 'bi bi-clouds-fill',
+                valueText: rightObject.cloud,
+                unitText: '&nbsp;&nbsp;&nbsp;'
+            }
+        ];
     }
 
     else if (searchMethod === 'forecast' || searchMethod === 'history') {
         if (timePicker.value === '') {
-            objectName = forecastData;
+            weatherDetails = [
+                {
+                    name: 'Max temperature',
+                    iconClass: 'bi bi-thermometer-high',
+                    valueText: `${rightObject.day.maxtemp_c}°`,
+                    unitText: 'Cel'
+                },
+                {
+                    name: 'Min temperature',
+                    iconClass: 'bi bi-thermometer-snow',
+                    valueText: `${rightObject.day.mintemp_c}°`,
+                    unitText: 'Cel'
+                },
+                {
+                    name: 'Humidity',
+                    iconClass: 'bi bi-moisture',
+                    valueText: rightObject.day.avghumidity,
+                    unitText: '&nbsp;&nbsp;%'
+                },
+                {
+                    name: ' Average visibility',
+                    iconClass: 'bi bi-cloud-haze-fill',
+                    valueText: rightObject.day.avgvis_km,
+                    unitText: ' Km'
+                },
+                {
+                    name: 'Sunrise',
+                    iconClass: 'bi bi-sunrise-fill',
+                    valueText: rightObject.astro.sunrise,
+                    unitText: '&nbsp;&nbsp;&nbsp;'
+                },
+                
+                {
+                    name: 'Sunset',
+                    iconClass: 'bi bi-sunset-fill',
+                    valueText: rightObject.astro.sunset,
+                    unitText: '&nbsp;&nbsp;&nbsp;'
+                }
+            ] ;
         }
         else {
-            objectName = specialTimeData
+            weatherDetails = [
+                {
+                    name: 'wind speed',
+                    iconClass: 'bi bi-wind',
+                    valueText: rightObject.wind_kph,
+                    unitText: 'K/h'
+                },
+                {
+                    name: 'wind direction',
+                    iconClass: 'bi bi-compass-fill',
+                    valueText: rightObject.wind_dir,
+                    unitText: `${rightObject.wind_degree}°`
+                },
+                {
+                    name: 'Humidity',
+                    iconClass: 'bi bi-moisture',
+                    valueText: rightObject.humidity,
+                    unitText: '&nbsp;&nbsp;%'
+                },
+                {
+                    name: 'Visibility',
+                    iconClass: 'bi bi-cloud-haze-fill',
+                    valueText: rightObject.vis_km,
+                    unitText: ' Km'
+                },
+                {
+                    name: 'Chance of rain',
+                    iconClass: 'bi bi-cloud-drizzle-fill',
+                    valueText: rightObject.chance_of_rain,
+                    unitText: '&nbsp;&nbsp;%'
+                },
+                
+                {
+                    name: 'Cloud',
+                    iconClass: 'bi bi-clouds-fill',
+                    valueText: rightObject.cloud,
+                    unitText: '&nbsp;&nbsp;&nbsp;'
+                }
+            ]
         }
     }
 
-  for (const key of objectName) {
+  for (const key of weatherDetails) {
 
     // start put the right data in the Div.
     const iconDiv = document.createElement('div');
