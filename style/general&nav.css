@@ -19,9 +19,14 @@
     font-weight: 400;
 }
 
-body {
-    height: 100vh;
+body, html {
+    height: 100%;
     font-family: 'Lato', sans-serif;
+
+}
+
+main {
+    min-height: 100%;
 }
 
 img {
@@ -113,4 +118,16 @@ nav {
         display: flex;
     }
     
+    #nav-header {
+        min-height: 50px;
+       
+        border-bottom: 1px solid var(--header-border);
+        font-size: .8rem;
+        width: 100%;
+    
+    }
+    
+    #nav-header img {
+        max-height: 30px;
+    }
 }

@@ -66,13 +66,12 @@ select:hover {
 
 section > div.flex > div.user-entry {
     width: 45%;
-    margin-top: var(--margin-t);
 }
 section, section>div.flex {
     padding-top: var(--margin-t);
 }
 
-#location-div > h5 {
+#location-div > h5,
+#date-div > h5 {
     color: red;
-
 }

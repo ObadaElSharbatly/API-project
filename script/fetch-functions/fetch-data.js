@@ -1,7 +1,7 @@
 import { datePicker, locationField, moreDetailsSection, timePicker } from "../constants.js";
 import { stopSearchButton } from "../manipulation/change-search-button.js";
 import { currentDate } from "../manipulation/restrict-dates.js";
-import { connectionError, invalidCityName } from "../manipulation/show-errors.js";
+import { connectionError, invalidCityName, mustChooseDate } from "../manipulation/show-errors.js";
 import { showGeneralInformation } from "../manipulation/view-weather-information.js";
 
 /* we need this to be global variable */
@@ -86,8 +86,15 @@ export function fetchRightData(){
         else if (error.message === 'No matching location found.'){
             console.log(error);
             invalidCityName(error.message);
-        } else {
+        }
+        else if (error.message === 'dt or end_dt parameter should be in yyyy-MM-dd format and on or after 1st Jan, 2010 (2010-01-01).') {
+            mustChooseDate('Please choose a date')
+        } 
+        else {
+            console.log('error', error)
+            console.log('error msg', error.message)
             throw error;
+            
         }
         
     })

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style/general&nav.css">
     <link rel="stylesheet" href="style/entries.css">
     <link rel="stylesheet" href="style/results.css">
+    <link rel="stylesheet" href="style/footer.css">
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,111 +18,126 @@
     <title>Weather information</title>
 </head>
 <body>
-    <!-- ------------- nav bar section ------------- -->
-    <nav>
-        <div class="flex right container" id="nav-lang">
-            <h4 class="r-margin" id="nl-lang">NL</h4>
-            <h4 id="en-lang">EN</h4>
-        </div>
-        <div class="container header flex spc-btw" id="nav-header">
-                <div class="flex">
-                    <img src="./imgs/postnl-logo.png" alt="PostNl Logo">
-                    <h4 style="color: var(--dark-blue);">Weather information</h4>
-                </div>
-                <div class="flex">
-                    <img src="./imgs/profile-pic.png" alt="User profile picture">
-                    <h4>Obada ELSharbatly</h4>
-                </div>
-        </div>
-    </nav>
 
-    <!-- ------------- User choices section ------------- -->
-    <Section class="container b-margin">
-            <!-- location -->
-        <div class="user-entry" id="location-div">
-            <label for="select-location"> What is your location ?</label><br>
-            <input type="text" placeholder="Type City / Country" name="select-location" id="select-location" required>
-            <i class="bi bi-geo-alt-fill" id="location-icon" title="Set the current location"></i>
-            
-        </div>
+    <main>
+        <!-- ------------- nav bar section ------------- -->
+        <nav>
+            <div class="flex right container" id="nav-lang">
+                <h4 class="r-margin" id="nl-lang">NL</h4>
+                <h4 id="en-lang">EN</h4>
+            </div>
+            <div class="container header flex spc-btw" id="nav-header">
+                    <div class="flex">
+                        <img src="./imgs/postnl-logo.png" alt="PostNl Logo">
+                        <h4 style="color: var(--dark-blue);">Weather information</h4>
+                    </div>
+                    <div class="flex">
+                        <img src="./imgs/profile-pic.png" alt="User profile picture">
+                        <h4>Obada ELSharbatly</h4>
+                    </div>
+            </div>
+        </nav>
+        <!-- ------------- User choices section ------------- -->
+        <Section class="container b-margin">
+                <!-- location -->
+            <div class="user-entry" id="location-div">
+                <label for="select-location"> What is your location ?</label><br>
+                <input type="text" placeholder="Type City / Country" name="select-location" id="select-location" required>
+                <i class="bi bi-geo-alt-fill" id="location-icon" title="Set the current location"></i>
         
-        <div class="flex spc-btw">
-            <!-- date -->
-            <div class="user-entry" id="date-div">
-                <label for="select-date"> Select date</label><br>
-                <input type="date" placeholder="Type City / Country" name="select-date" id="select-date">
-            </div>
-            <!-- Time -->
-            <div class="user-entry" id="time-div">
-                <label for="select-time"> Select time slot</label><br>
-                <select name="time" id="select-time">
-                    <option value="" disabled selected hidden>Select time slot</option>
-                    <optgroup label="-- Before midday --">
-                        <option value="0">12:00 AM</option>
-                        <option value="1">01:00 AM</option>
-                        <option value="2">02:00 AM</option>
-                        <option value="3">03:00 AM</option>
-                        <option value="4">04:00 AM</option>
-                        <option value="5">05:00 AM</option>
-                        <option value="6">06:00 AM</option>
-                        <option value="7">07:00 AM</option>
-                        <option value="8">08:00 AM</option>
-                        <option value="9">09:00 AM</option>
-                        <option value="10">10:00 AM</option>
-                        <option value="11">11:00 AM</option>
-                    </optgroup>
-                    <optgroup label="-- After midday --">
-                        <option value="12">12:00 PM</option>
-                        <option value="13">01:00 PM</option>
-                        <option value="14">02:00 PM</option>
-                        <option value="15">03:00 PM</option>
-                        <option value="16">04:00 PM</option>
-                        <option value="17">05:00 PM</option>
-                        <option value="18">06:00 PM</option>
-                        <option value="19">07:00 PM</option>
-                        <option value="20">08:00 PM</option>
-                        <option value="21">09:00 PM</option>
-                        <option value="22">10:00 PM</option>
-                        <option value="23">11:00 PM</option>
-                    </optgroup>
-                </select>
-            </div>
-        </div>
-        <div class="flex">
-            <button class="btn t-margin" id="search-btn">search</button>
-            <button class="btn t-margin" id="clear-btn">clear fields</div>
-        </div>
-    </Section>
-
-    <!-- ------------- result section ------------- -->
-    <section class="container hide" id="result-section">
-        <!-- General information -->
-        <div class="flex">
-            <div>
-                <h2 id="city-name">City / Country name</h2>
-                <br>
-                <h4 id="weather-con">weather condition</h4>
-                <br>
-                <h4 id="date">Monday >> 17:00:00 </h4>
-                <br>
-                <h4 id="clock">00:05:25</h4>
             </div>
         
+            <div class="flex spc-btw">
+                <!-- date -->
+                <div class="user-entry" id="date-div">
+                    <label for="select-date"> Select date</label><br>
+                    <input type="date" placeholder="Type City / Country" name="select-date" id="select-date">
+                </div>
+                <!-- Time -->
+                <div class="user-entry" id="time-div">
+                    <label for="select-time"> Select time slot</label><br>
+                    <select name="time" id="select-time">
+                        <option value="" disabled selected hidden>Select time slot</option>
+                        <optgroup label="-- Before midday --">
+                            <option value="0">12:00 AM</option>
+                            <option value="1">01:00 AM</option>
+                            <option value="2">02:00 AM</option>
+                            <option value="3">03:00 AM</option>
+                            <option value="4">04:00 AM</option>
+                            <option value="5">05:00 AM</option>
+                            <option value="6">06:00 AM</option>
+                            <option value="7">07:00 AM</option>
+                            <option value="8">08:00 AM</option>
+                            <option value="9">09:00 AM</option>
+                            <option value="10">10:00 AM</option>
+                            <option value="11">11:00 AM</option>
+                        </optgroup>
+                        <optgroup label="-- After midday --">
+                            <option value="12">12:00 PM</option>
+                            <option value="13">01:00 PM</option>
+                            <option value="14">02:00 PM</option>
+                            <option value="15">03:00 PM</option>
+                            <option value="16">04:00 PM</option>
+                            <option value="17">05:00 PM</option>
+                            <option value="18">06:00 PM</option>
+                            <option value="19">07:00 PM</option>
+                            <option value="20">08:00 PM</option>
+                            <option value="21">09:00 PM</option>
+                            <option value="22">10:00 PM</option>
+                            <option value="23">11:00 PM</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+            <div class="flex">
+                <button class="btn t-margin" id="search-btn">search</button>
+                <button class="btn t-margin" id="clear-btn">clear fields</div>
+            </div>
+        </Section>
+        <!-- ------------- result section ------------- -->
+        <section class="container hide" id="result-section">
+            <!-- General information -->
+            <div class="flex">
+                <div>
+                    <h2 id="city-name">City / Country name</h2>
+                    <br>
+                    <h4 id="weather-con">weather condition</h4>
+                    <br>
+                    <h4 id="date">Monday >> 17:00:00 </h4>
+                    <br>
+                    <h4 id="clock">00:05:25</h4>
+                </div>
+        
+                <div>
+                    <img src="./imgs/209-2092042_partly-cloudy-clipart-clip-art-transparent-png-partly.png" alt="" id="condition-logo">
+                </div>
+                <div class="flex" id="temperature">
+                    <p id="temp-deg">23 </p>
+                    <p id="temp-type">C</p>
+                </div>
+            </div>
+        </section>
+            <!-- more details -->
+        <section class="container flex spc-btw footer-margin hide" id="more-details-section">
+        </section>
+    </main>
+
+    <section class="footer">
+        <footer>
+            <div class="flex">
+                <img src="./imgs/logo-white.svg" alt="footer logo">
+                <p><a href="">© Koninklijke PostNL</a></p>
+            </div>
             <div>
-                <img src="./imgs/209-2092042_partly-cloudy-clipart-clip-art-transparent-png-partly.png" alt="" id="condition-logo">
+                <ul class="flex">
+                    <li class="r-margin"><a href="">Privacy Statement</a></li>
+                    <li class="r-margin"><a href="">Cookie Statement</a></li>
+                    <li class="r-margin"><a href="">Terms of Use</a></li>
+                    <li class="r-margin"><a href="">Terms and Conditions</a></li>
+                </ul>
             </div>
-            <div class="flex" id="temperature">
-                <p id="temp-deg">23 </p>
-                <p id="temp-type">C</p>
-            </div>
-        </div>
+        </footer>
     </section>
-        <!-- more details -->
-    <section class="container flex spc-btw hide" id="more-details-section">
-
-
-    </section>
-
 
 <script type="module" src="./script/main.js"></script>
 </body>
