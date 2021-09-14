@@ -71,7 +71,7 @@ section, section>div.flex {
     padding-top: var(--margin-t);
 }
 
-#location-div > h5 {
+#location-div > h5,
+#date-div > h5 {
     color: red;
-
 }
