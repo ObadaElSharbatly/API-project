@@ -1,4 +1,4 @@
-import { cityNameInfo, clockInfo, datePicker, dayInfo, generalInfoSection, temperatureDegree, tempEL, timePicker, weatherConditionInfo, weatherConditionLogo } from "../constants.js";
+import { cityNameInfo, clockInfo, datePicker, dayInfo, generalInfoSection, temperatureDegree, tempEL, timePicker, weatherConditionInfo, weatherConditionLogo, temperatureType } from "../constants.js";
 import { searchMethod } from "../fetch-functions/fetch-data.js";
 import { changeTempType } from "../Helper-functions/change-temp-type.js";
 import { showDayFormat, showRightTime } from "../Helper-functions/date.js";
@@ -11,6 +11,8 @@ let changeTemperature;
 export function showGeneralInformation(jsonData){
     generalInfoSection.classList.remove('hide')
     cityNameInfo.textContent = `${jsonData.location.name} - ${jsonData.location.region} - ${jsonData.location.country}`;
+    temperatureType. textContent = 'C';
+    
     if (tempELHasEvenListener) {
         tempEL.removeEventListener('click', changeTemperature);
     }
