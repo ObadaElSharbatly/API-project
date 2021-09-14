@@ -1,8 +1,8 @@
-import { cityNameInfo, clockInfo, datePicker, dayInfo, generalInfoSection, temperatureDegree, tempEL, timePicker, weatherConditionInfo, weatherConditionLogo, temperatureType } from "../constants.js";
+import { cityNameInfo, clockInfo, datePicker, dayInfo, generalInfoSection, temperatureDegree, tempEL, timePicker, weatherConditionInfo, weatherConditionLogo, temperatureType, locationIcon, locationField } from "../constants.js";
 import { searchMethod } from "../fetch-functions/fetch-data.js";
 import { changeTempType } from "../Helper-functions/change-temp-type.js";
 import { showDayFormat, showRightTime } from "../Helper-functions/date.js";
-import { setWeatherDetails } from "./show-details-of-weather.js";
+import { setWeatherDetails, setWeatherDetailsForCurrentLocation } from "./show-details-of-weather.js";
 
 let tempELHasEvenListener = false;
 /* variable which will use to save the function with params inside. */
@@ -12,7 +12,7 @@ export function showGeneralInformation(jsonData){
     generalInfoSection.classList.remove('hide')
     cityNameInfo.textContent = `${jsonData.location.name} - ${jsonData.location.region} - ${jsonData.location.country}`;
     temperatureType. textContent = 'C';
-    
+
     if (tempELHasEvenListener) {
         tempEL.removeEventListener('click', changeTemperature);
     }
@@ -78,3 +78,41 @@ export function showGeneralInformation(jsonData){
     }
     
 }
+
+
+/* get data for Current Location */
+async function setCurrentLocationData(pos) {
+    const crd = pos.coords;
+    const endPoint = `https://api.weatherapi.com/v1/current.json?key=b458fd088f5b42c082691547210409&q=${crd.latitude},${crd.longitude}`;
+    const fetchData = await fetch(endPoint)
+    console.log(endPoint);
+    const data = await fetchData.json();
+
+    generalInfoSection.classList.remove('hide')
+    cityNameInfo.textContent = `${data.location.name} - ${data.location.region} - ${data.location.country}`;
+    temperatureType. textContent = 'C';
+
+    if (tempELHasEvenListener) {
+        tempEL.removeEventListener('click', changeTemperature);
+    }
+    
+    weatherConditionInfo.textContent = data.current.condition.text;
+    weatherConditionLogo.src         = data.current.condition.icon;
+    dayInfo.innerHTML                = showDayFormat(data.location.localtime);
+    clockInfo.textContent            = `${showRightTime(data.location.localtime)}`;
+    temperatureDegree.textContent    = Math.round(data.current.feelslike_c);
+
+    // change the temp type
+    changeTemperature = () => 
+    changeTempType(data.current.feelslike_f, data.current.feelslike_c);
+    tempEL.addEventListener('click',changeTemperature);
+    tempELHasEvenListener = true;
+
+    /* show more details */
+    setWeatherDetailsForCurrentLocation(data.current);
+    locationIcon.addEventListener('click', ()=> {
+        locationField.value = `${data.location.name}-${data.location.region}`
+    })
+  }
+  
+  navigator.geolocation.getCurrentPosition(setCurrentLocationData);
