@@ -21,6 +21,7 @@
 
 body {
     height: 100vh;
+    font-family: 'Lato', sans-serif;
 }
 
 img {
@@ -70,6 +71,10 @@ nav {
 
 .t-margin {
     margin-top: var(--margin-t);
+}
+
+.b-margin {
+    margin-bottom: 20px;
 }
 .flex {
     display: flex;
