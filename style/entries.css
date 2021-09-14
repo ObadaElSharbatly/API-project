@@ -66,7 +66,6 @@ select:hover {
 
 section > div.flex > div.user-entry {
     width: 45%;
-    margin-top: var(--margin-t);
 }
 section, section>div.flex {
     padding-top: var(--margin-t);

@@ -25,11 +25,11 @@ for current time besides past and future. I will follow the [PostNL](https://www
 
 
   ### nice to have features:
-  * Automatically give the user information about current location.
-  * User can present the data in different language.
-  * Design different background images fit's with [PostNL](https://www.postnl.nl/en/) website style and make it change with temperature.
-  * Make special design for mobile like aside menu.
-  * Show the location of user on the Map.
-  * User can change the time to know the weather during the day.
+  - [ ] Automatically give the user information about current location.
+  - [ ] User can present the data in different language.
+  - [ ] Design different background images fit's with [PostNL](https://www.postnl.nl/en/) website style and make it change with temperature.
+  - [ ] Make special design for mobile like aside menu.
+  - [ ] Show the location of user on the Map.
+  - [x] User can change the time to know the weather during the day.
 
   
