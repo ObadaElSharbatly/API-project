@@ -1,7 +1,7 @@
-import { datePicker, generalInfoSection, locationField, moreDetailsSection, timePicker } from "../constants.js";
+import { datePicker, locationField, moreDetailsSection, timePicker } from "../constants.js";
 import { stopSearchButton } from "../manipulation/change-search-button.js";
 import { currentDate } from "../manipulation/restrict-dates.js";
-import { invalidCityName } from "../manipulation/show-errors.js";
+import { connectionError, invalidCityName } from "../manipulation/show-errors.js";
 import { showGeneralInformation } from "../manipulation/view-weather-information.js";
 
 /* we need this to be global variable */
@@ -48,7 +48,7 @@ function creatTheEndpointUrl() {
         }
     } 
     else {
-        invalidCityName();
+        invalidCityName('This is a required field');
     }
 }
 
@@ -59,13 +59,6 @@ export function fetchRightData(){
 
     fetch(endPointUrl)
     .then((receivedData)=>{
-        /* if (!receivedData.ok) {
-            const jsonData = receivedData.json();
-            console.log('received Data IS: ', receivedData);
-            console.log('json data failed: ', jsonData);
-            throw new Error(jsonData);
-        } */
-        
         return receivedData.json();
     })
     .then((jsonWeatherData) => {
@@ -73,11 +66,11 @@ export function fetchRightData(){
             console.log(jsonWeatherData.error);
             throw new Error(jsonWeatherData.error.message);
         }
+
         console.log('json data success', jsonWeatherData)
         // this function do the suitable behavior with the jason data.
         showGeneralInformation(jsonWeatherData);
-        // we should change the 'search' button to reload the page
-        stopSearchButton();
+        
     })
 
     .catch((error)=>{
@@ -88,18 +81,13 @@ export function fetchRightData(){
             if (moreDetailsSection.classList.contains('hide')) {
                 moreDetailsSection.classList.remove('hide')
             }
-            
-            const errorMsg = document.createElement('P');
-            errorMsg.classList.add('error');
-            errorMsg.textContent = 'Failed to fetch data please make sure that your internet is stable and try again in 5 sec page gonna reload'
-            moreDetailsSection.appendChild(errorMsg);
-            // setTimeout(()=>location.reload(), 5);
-
-            
+            connectionError();
         } 
         else if (error.message === 'No matching location found.'){
             console.log(error);
-            invalidCityName();
+            invalidCityName(error.message);
+        } else {
+            throw error;
         }
         
     })

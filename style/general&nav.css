@@ -34,6 +34,7 @@ nav {
     color: var(--orange);
 }
 
+
 #nav-lang {
     background-color: var(--header);
     min-height: 30px;
@@ -43,7 +44,10 @@ nav {
 
 #nav-header {
     min-height: 70px;
+    height: fit-content;
     border-bottom: 1px solid var(--header-border);
+    font-size: 1rem;
+    width: 100%;
 
 }
 
@@ -103,6 +107,10 @@ nav {
     .container {
         padding: 0px 10%;
         display: block;
+    }
+
+    nav>.flex {
+        display: flex;
     }
     
 }
