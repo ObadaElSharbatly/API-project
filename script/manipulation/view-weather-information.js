@@ -2,9 +2,7 @@ import { cityNameInfo, clockInfo, datePicker, dayInfo, generalInfoSection, tempe
 import { searchMethod } from "../fetch-functions/fetch-data.js";
 import { changeTempType } from "../Helper-functions/change-temp-type.js";
 import { showDayFormat, showRightTime } from "../Helper-functions/date.js";
-import { setCurrentWeatherDetails } from "./current-details.js";
-import { showGeneralDayDetails } from "./forecast-history-details.js";
-import { showDetailsForSpecificTime } from "./special-time-details.js";
+import { setWeatherDetails } from "./show-details-of-weather.js";
 
 let tempELHasEvenListener = false;
 /* variable which will use to save the function with params inside. */
@@ -33,7 +31,7 @@ export function showGeneralInformation(jsonData){
         tempELHasEvenListener = true;
 
         /* show more details */
-        setCurrentWeatherDetails(jsonData.current);
+        setWeatherDetails(jsonData.current);
         
     } 
 
