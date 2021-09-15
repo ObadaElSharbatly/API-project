@@ -47,7 +47,7 @@ export function showGeneralInformation(jsonData){
             weatherConditionInfo.textContent = jsonData.forecast.forecastday[0].day.condition.text;
             weatherConditionLogo.src         = jsonData.forecast.forecastday[0].day.condition.icon;
             temperatureDegree.textContent    = Math.round(jsonData.forecast.forecastday[0].day.avgtemp_c);
-            clockInfo.remove();
+            clockInfo.textContent            = '';
 
             // change the temp type
             changeTemperature = () => 
@@ -61,6 +61,7 @@ export function showGeneralInformation(jsonData){
         
         // when user give a day from now and 5 days ahead with 'specific time'
         else {
+          
             weatherConditionInfo.textContent = jsonData.forecast.forecastday[0].hour[0].condition.text;
             weatherConditionLogo.src         = jsonData.forecast.forecastday[0].hour[0].condition.icon;
             clockInfo.textContent            = showRightTime(jsonData.forecast.forecastday[0].hour[0].time);
