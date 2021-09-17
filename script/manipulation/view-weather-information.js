@@ -17,6 +17,10 @@ export function showGeneralInformation(jsonData){
         tempEL.removeEventListener('click', changeTemperature);
     }
 
+    if (clockInfo.classList.contains('hide')) {
+        clockInfo.classList.remove('hide');
+    }
+
     /* Show information in case of current weather data request */
     if(searchMethod === 'current'){
 
@@ -47,7 +51,7 @@ export function showGeneralInformation(jsonData){
             weatherConditionInfo.textContent = jsonData.forecast.forecastday[0].day.condition.text;
             weatherConditionLogo.src         = jsonData.forecast.forecastday[0].day.condition.icon;
             temperatureDegree.textContent    = Math.round(jsonData.forecast.forecastday[0].day.avgtemp_c);
-            clockInfo.textContent            = '';
+            clockInfo.classList.add('hide');
 
             // change the temp type
             changeTemperature = () => 
