@@ -1,82 +1,84 @@
-#result-section{
-    transition: 2s;
-    background-color: var(--header);
-    margin-top: 30px ;
-    /* padding: 20px 0px; */
+#result-section {
+  transition: 2s;
+  background-color: var(--header);
+  margin-top: 30px;
+  padding: 20px 30%;
 }
 
 #result-section h2 {
-    color: var(--dark-blue);
+  color: var(--dark-blue);
 }
 
 #result-section h4 {
-    color: var(--orange);
+  color: var(--orange);
 }
 
 #result-section img {
-    height: 100px;
-    margin: 3px 20px;
+  height: 100px;
+  margin: 3px 20px;
 }
 
 #temp-deg {
-    color: var(--dark-blue);
-    font-size: 5rem;
-    margin-block-end: 0px;
-    margin-block-start: 0px;
+  color: var(--dark-blue);
+  font-size: 5rem;
+  margin-block-end: 0px;
+  margin-block-start: 0px;
 }
 
 #temp-type {
-    align-self: flex-start;
-    font-size: 15pt;
-    color: var(--orange);
+  align-self: flex-start;
+  font-size: 15pt;
+  color: var(--orange);
 }
 
 #temperature:hover {
-    color: var(--btn-hover) !important;
-    cursor: pointer;
+  color: var(--btn-hover) !important;
+  cursor: pointer;
 }
 
 .hide {
-    display: none !important;  
+  display: none !important;
 }
 
 /* More details Section */
 #more-details-section {
-    background-color: var(--header);
-    padding-top: 20px;
-
-    
+  background-color: var(--header);
+  padding-top: 20px;
 }
-.icon-div{
-    min-width: 47%;
-    margin-left: auto;
-    margin-right: auto;
+.icon-div {
+  min-width: 47%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.icon-div>div {
-    width: 100%;
-    font-size: 14pt;
-    color: var(--dark-blue);
-    
+.icon-div > div {
+  width: 100%;
+  font-size: 14pt;
+  color: var(--dark-blue);
 }
 
-.icon-div>div>i {
-    font-size: 20pt ;
-    color: var(--orange);   
+.icon-div > div > i {
+  font-size: 20pt;
+  color: var(--orange);
 }
 
-
-hr{
-    background-color: var(--orange);
-    height: 1px;
-    width: 100%;
-    border: none
+hr {
+  background-color: var(--orange);
+  height: 1px;
+  width: 100%;
+  border: none;
 }
 
 .error {
-    margin-left: auto;
-    margin-right: auto;
-    color: red;
-    font-size: 25pt;
-    text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  color: red;
+  font-size: 25pt;
+  text-align: center;
+}
+
+@media only screen and (max-width: 1000px) {
+  #result-section {
+    padding: 20px 10%;
+  }
 }
