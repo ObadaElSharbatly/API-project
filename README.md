@@ -1,7 +1,7 @@
 # (API) weather App project
 
 ## Scetch design:
-![screen shot from the app](https://raw.githubusercontent.com/ObadaElSharbatly/Weather-APP-HYF/main/imgs/app-screenshot.JPG)
+![screen shot from the app](https://raw.githubusercontent.com/ObadaElSharbatly/Weather-APP-HYF/main/imgs/APISketch.jpg)
 
 ## Check the project webpage:
 You can test the app from [here](https://obadaelsharbatly.github.io/Weather-APP-HYF/):
