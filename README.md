@@ -4,7 +4,7 @@
 ![screen shot from the app](https://raw.githubusercontent.com/ObadaElSharbatly/Weather-APP-HYF/main/imgs/APISketch.jpg)
 
 ## Check the project webpage:
-You can test the app from [here](https://obadaelsharbatly.github.io/Weather-APP-HYF/):
+You can test the app from [here](https://obadamoustafa.github.io/Weather-APP-HYF/):
 
 ## App features *(content will be modified after finishing the app)*:
 **It's a weather app which can give you information about the wewather condition
